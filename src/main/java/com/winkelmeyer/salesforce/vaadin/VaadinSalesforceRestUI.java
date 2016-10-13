@@ -103,7 +103,7 @@ public class VaadinSalesforceRestUI extends UI {
 
         Button btnReadLocationsFromOpportunities = actionBtn("Read Opportunities with Locations",event -> {
 
-		    List<Opportunity> opportunities = api.query("select Id, Name, Amount, Account.Name, Account.BillingCity, Account.BillingCountry, Account.BillingPostalCode, Account.BillingState, Account.BillingStreet from Opportunity", Opportunity.class).getRecords();
+		    List<Opportunity> opportunities = api.query("select Id, Name, Amount, Account.Name, Account.BillingCity, Account.BillingCountry, Account.BillingPostalCode, Account.BillingState, Account.BillingStreet from Opportunity WHERE Account.BillingState != ''", Opportunity.class).getRecords();
 
 		    MTable<Opportunity> accountsTable = new MTable<>(Opportunity.class).withFullWidth();
 		    accountsTable.addBeans(opportunities)
