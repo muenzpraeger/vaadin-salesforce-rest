@@ -1,0 +1,15 @@
+{
+  "name": "Vaadin and Salesforce on REST",
+  "description": "Showcasing to use Salesforce in combination with Vaadin",
+  "image": "heroku/gradle",
+  "website": "https://github.com/muenzpraeger/vaadin-salesforce-rest",
+  "repository": "https://github.com/muenzpraeger/vaadin-salesforce-rest",
+  "env" : {
+    "OAUTH_CONSUMER_KEY": {
+      "description": "Enter the Salesforce Connected App Consumer Key in here."
+    },
+    "OAUTH_CONSUMER_SECRET": {
+      "description": "Enter the Salesforce Connected App Consumer Secret in here."
+    }
+  }
+}

@@ -1,0 +1,36 @@
+plugins {
+  id 'fi.jasoft.plugin.vaadin' version '1.0'
+}
+
+apply plugin: 'eclipse-wtp'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'org.vaadin.addon.oauthpopup:oauthpopup:0.1.0'
+    compile 'com.vaadin:vaadin-client-compiled:7.7.3'
+    compile 'com.frejo:force-rest-api:0.0.31'
+    compile 'org.eclipse.jetty:jetty-client:9.3.12.v20160915'
+    compile 'com.ning:async-http-client:1.9.39'
+    compile "com.github.jsimone:webapp-runner:8.0.33.1"
+    compile 'org.slf4j:slf4j-api:1.7.21'
+    compile 'com.github.scribejava:scribejava-apis:3.2.0'
+	  compile 'org.vaadin.addon:v-leaflet:1.0.0-rc3'
+	  compile 'org.vaadin:viritin:1.57'
+	  compile 'de.grundid.opendatalab:geojson-jackson:1.6'
+
+    testCompile 'junit:junit:4.12'
+}
+
+task copyToLib(type: Copy) {
+    into "$buildDir/server"
+    from(configurations.compile) {
+        include "webapp-runner*"
+    }
+}
+
+task stage {
+  dependsOn clean, war, copyToLib
+}
